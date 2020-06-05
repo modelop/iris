@@ -40,7 +40,8 @@ def metrics(df):
     yield { "ACCURACY": model.score(X_test, y_test)}
 
 
-def action(df):
+def action(X):
+    df = pd.DataFrame(X, index=[0])
     X_test = df.iloc[:, 1:]
     y_pred = model.predict(X_test)
     yield y_pred
