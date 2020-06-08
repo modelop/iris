@@ -41,10 +41,11 @@ def metrics(df):
 
 
 def action(X):
-    df = pd.DataFrame(X, index=[0])
+    df = pd.DataFrame(X)
     X_test = df.iloc[:, 1:]
     y_pred = model.predict(X_test)
-    yield y_pred
+    for y in y_pred:
+        yield y
 
 
 
