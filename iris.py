@@ -41,7 +41,8 @@ def metrics(df):
 
 
 def action(X):
-    y_pred = model.predict(X)
+    x = pd.DataFrame(X, index=[0])
+    y_pred = model.predict(x)
     for y in y_pred:
         yield y
 
