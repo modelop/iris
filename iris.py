@@ -42,15 +42,15 @@ def metrics(df):
 
 def action(X):
     df = pd.DataFrame(X)
-    X_test = df.iloc[:, 1:]
-    y_pred = model.predict(X_test)
+    y_pred = model.predict(df)
     for y in y_pred:
         yield y
 
 
 
 if __name__ == "__main__":
-    train_df = pd.read_csv('data/iris.csv')
+    train_df = pd.read_csv('data/train.csv')
+    pred_df =  pd.read_csv('data/test.csv')
 
 
     train(train_df)
@@ -60,5 +60,5 @@ if __name__ == "__main__":
     for m in metrics(train_df):
         print(m)
 
-    for a in action(train_df):
+    for a in action(pred_df):
         print(a)
